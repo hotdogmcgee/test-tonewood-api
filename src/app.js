@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
-const  { NODE_ENV, DB_URL } = require('./config.js')
+const  { NODE_ENV, DATABASE_URL } = require('./config.js')
 const woodsRouter = require('./woods/woods-router')
 const authRouter = require('./auth/auth-router')
 const usersRouter = require('./users/users-router')
@@ -26,7 +26,7 @@ app.use('/api/submissions', submissionsRouter)
 
 app.get('/', (req, res) => {
 
-    res.send(DB_URL)
+    res.send(DATABASE_URL)
 })
 
 app.use(function errorHandler(error, req, res, next) {
