@@ -77,7 +77,6 @@ const WoodsService = {
                     usr.user_name,
                     usr.email,
                     usr.full_name,
-                    usr.nickname,
                     usr.date_created,
                     usr.date_modified
                 ) tmp)
@@ -141,7 +140,6 @@ const WoodsService = {
             user_name: user.user_name,
             email: user.email,
             full_name: user.full_name,
-            nickname: user.nickname,
             date_created: new Date(user.date_created),
             date_modified: new Date(user.date_modified) || null
           },
@@ -155,7 +153,6 @@ const WoodsService = {
       'usr.user_name AS user:user_name',
       'usr.full_name AS user:full_name',
       'usr.email AS user:email',
-      'usr.nickname AS user:nickname',
       'usr.date_created AS user:date_created',
       'usr.date_modified AS user:date_modified',
     ]

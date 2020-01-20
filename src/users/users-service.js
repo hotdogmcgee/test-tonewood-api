@@ -12,7 +12,6 @@ const UsersService = {
         "usr.user_name",
         "usr.full_name",
         "usr.email",
-        "usr.nickname",
         "usr.date_created",
         "usr.date_modified"
       );
@@ -72,7 +71,6 @@ const UsersService = {
       full_name: xss(user.full_name),
       user_name: xss(user.user_name),
       email: xss(user.email),
-      nickname: xss(user.nick_name),
       date_created: new Date(user.date_created)
     };
   }

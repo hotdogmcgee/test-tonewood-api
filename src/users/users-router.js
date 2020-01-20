@@ -26,7 +26,7 @@ usersRouter.route("/").get((req, res, next) => {
 });
 
 usersRouter.post("/", jsonBodyParser, (req, res, next) => {
-  const { password, user_name, full_name, email, nickname } = req.body;
+  const { password, user_name, full_name, email } = req.body;
   for (const field of ["full_name", "user_name", "email", "password"])
     if (!req.body[field])
       return res.status(400).json({
@@ -57,7 +57,6 @@ UsersService.hasUserWithEmail(req.app.get("db"), email)
           password: hashedPassword,
           email,
           full_name,
-          nickname,
           date_created: "now()"
         };
         console.log(newUser.hashedPassword);

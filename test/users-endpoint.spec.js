@@ -35,7 +35,6 @@ describe.only("Users Endpoints", function() {
           password: "test password",
           full_name: "test full_name",
           email: "testemail@test.com",
-          nickname: "test nickname"
         };
 
         it(`responds with 400 required error when '${field}' is missing`, () => {
@@ -163,7 +162,6 @@ describe.only("Users Endpoints", function() {
             expect(res.body).to.have.property("id");
             expect(res.body.user_name).to.eql(newUser.user_name);
             expect(res.body.full_name).to.eql(newUser.full_name);
-            expect(res.body.nickname).to.eql("");
             expect(res.body).to.not.have.property("password");
             expect(res.headers.location).to.eql(`/api/users/${res.body.id}`);
             const expectedDate = new Date().toLocaleString("en", {
@@ -181,7 +179,6 @@ describe.only("Users Endpoints", function() {
               .then(row => {
                 expect(row.user_name).to.eql(newUser.user_name);
                 expect(row.full_name).to.eql(newUser.full_name);
-                expect(row.nickname).to.eql(null);
                 const expectedDate = new Date().toLocaleString("en", {
                   timeZone: "UTC"
                 });

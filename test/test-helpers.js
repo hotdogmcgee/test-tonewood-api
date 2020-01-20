@@ -9,7 +9,6 @@ function makeUsersArray() {
       user_name: "test-user-1",
       full_name: "Test user 1",
       email: "woody@wood.com",
-      nickname: "TU1",
       password: "password",
       date_created: "2029-01-22T16:28:32.615Z",
       date_modified: null,
@@ -19,7 +18,6 @@ function makeUsersArray() {
       user_name: "test-user-2",
       full_name: "Test user 2",
       email: "notwoody@notwood.com",
-      nickname: "TU2",
       password: "password",
       date_created: "2029-01-22T16:28:32.615Z",
       date_modified: null,
@@ -29,7 +27,6 @@ function makeUsersArray() {
       user_name: "test-user-3",
       full_name: "Test user 3",
       email: "maybe@maybe.com",
-      nickname: "TU3",
       password: "password",
       date_created: "2029-01-22T16:28:32.615Z",
       date_modified: null,
@@ -39,7 +36,6 @@ function makeUsersArray() {
       user_name: "test-user-4",
       full_name: "Test user 4",
       email: "steve@evets.com",
-      nickname: "TU4",
       password: "password",
       date_created: "2029-01-22T16:28:32.615Z",
       date_modified: null,
@@ -158,7 +154,6 @@ function makeExpectedWood(users, wood) {
       id: user.id,
       user_name: user.user_name,
       full_name: user.full_name,
-      nickname: user.nickname,
       date_created: user.date_created
     }
   };
@@ -190,7 +185,6 @@ function makeExpectedSubmission(users, sub) {
       user_name: user.user_name,
       email: user.email,
       full_name: user.full_name,
-      nickname: user.nickname,
       date_created: user.date_created,
       date_modified: user.date_modified,
     },
