@@ -6,7 +6,7 @@ TRUNCATE
     RESTART IDENTITY CASCADE;
 
 INSERT INTO tw_users (user_name, full_name, email, password)
-VALUES
+VALUESusers
 ('Joe', 'Joe Schmo', 'joe@joe.com', '$2a$12$G5B2qw/JnCDrZftmviC.BOsXV9mdCVJLGjCaLHTFydCZSU2N8kM5C'),
 ('Cally', 'Callista Cool', 'cally@cally.com', '$2a$12$55f1Ak42D8S50SiWV8BoY.VI4kccM7DGR66.LLCPxWsrTFmohU9Oi'),
 ('ilovebalsa', 'Dan Balsa', 'dan@dan.com', '$2a$12$iTe5ufv0o2YVzGoaayEh/.q6kb0XrJq4ZA6gPWCou5dIdPwmP.662'),
