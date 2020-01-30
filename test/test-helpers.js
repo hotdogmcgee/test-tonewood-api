@@ -50,6 +50,7 @@ function makeWoodsArray(users) {
       genus: "First test wood!",
       species: "who knows",
       common_name: 'maple',
+      // number_of_submissions: 2,
       user_id: users[0].id,
       date_created: "2029-01-22T16:28:32.615Z"
     },
@@ -58,6 +59,7 @@ function makeWoodsArray(users) {
       genus: "Second test wood!",
       species: "balsa",
       common_name: 'balsa',
+      // number_of_submissions: 3,
       user_id: users[1].id,
       date_created: "2029-01-22T16:28:32.615Z"
     },
@@ -66,6 +68,7 @@ function makeWoodsArray(users) {
       genus: "Third test wood!",
       species: "acacia",
       common_name: 'oak',
+      // number_of_submissions: 1,
       user_id: users[2].id,
       date_created: "2029-01-22T16:28:32.615Z"
     },
@@ -74,6 +77,7 @@ function makeWoodsArray(users) {
       genus: "Fourth test wood!",
       species: "maple",
       common_name: 'duh, maple',
+      // number_of_submissions: 2,
       user_id: users[3].id,
       date_created: "2029-01-22T16:28:32.615Z"
     }
@@ -149,9 +153,12 @@ function makeExpectedWood(users, wood) {
     id: wood.id,
     genus: wood.genus,
     species: wood.species,
+    common_name: wood.common_name,
+    number_of_submissions: wood.number_of_submissions || 0,
     date_created: wood.date_created,
     user: {
       id: user.id,
+      email: user.email,
       user_name: user.user_name,
       full_name: user.full_name,
       date_created: user.date_created
@@ -197,6 +204,8 @@ function makeMaliciousWood(user) {
     date_created: new Date().toISOString(),
     genus: 'Naughty naughty very naughty <script>alert("xss");</script>',
     species: `Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
+    common_name: 'maple',
+
     user_id: user.id
   };
   const expectedWood = {

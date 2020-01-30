@@ -40,16 +40,16 @@ describe('Protected endpoints', function() {
       path: '/api/woods/1',
       method: supertest(app).get,
     },
-    // {
-    //   name: 'GET /api/woods/:entry_id/reviews',
-    //   path: '/api/woods/1/reviews',
-    //   method: supertest(app).get,
-    // },
-    // {
-    //   name: 'POST /api/reviews',
-    //   path: '/api/reviews',
-    //   method: supertest(app).post,
-    // },
+    {
+      name: 'GET /api/woods/:entry_id/submissions',
+      path: '/api/woods/1/submissions',
+      method: supertest(app).get,
+    },
+    {
+      name: 'POST /api/submissions',
+      path: '/api/submissions',
+      method: supertest(app).post,
+    },
   ]
 
   protectedEndpoints.forEach(endpoint => {

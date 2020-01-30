@@ -33,42 +33,43 @@ woodsRouter
     })
 
 
-woodsRouter
-    .route('/')
-    //auth back in
-    .post( jsonBodyParser, (req, res, next) => {
-      const { genus, species, common_name, hardness, user_id  } = req.body
-      const newWood = { genus, species, common_name, hardness, user_id }
+    //NO POSTING OF INDIVIDUAL WOODS.  
+    //consider adding back in
+// woodsRouter
+//     .route('/')
+//     .post( jsonBodyParser, (req, res, next) => {
+//       const { genus, species, common_name, hardness, user_id  } = req.body
+//       const newWood = { genus, species, common_name, hardness, user_id }
 
-      for(const [key, value] of Object.entries(newWood)) {
-        if (value == null) {
-            return res.status(400).json({
-                error: { message: `Missing '${key}' in request body`}
-            })
-        }
-    }
+//       for(const [key, value] of Object.entries(newWood)) {
+//         if (value == null) {
+//             return res.status(400).json({
+//                 error: { message: `Missing '${key}' in request body`}
+//             })
+//         }
+//     }
 
-    //how do i get user 
-    // newWood.user_id = req.user.id
+//     //how do i get user 
+//     // newWood.user_id = req.user.id
 
-    WoodsService.insertWood(
-      req.app.get('db'),
-            newWood
-        )
-            .then(wood => {
-                res
-                    .status(201)
-                    .location(path.posix.join(req.originalUrl + `/${wood.id}`))
-                    .json(WoodsService.serializeWood(wood))
-            })
-            .catch(next)
-    })
+//     WoodsService.insertWood(
+//       req.app.get('db'),
+//             newWood
+//         )
+//             .then(wood => {
+//                 res
+//                     .status(201)
+//                     .location(path.posix.join(req.originalUrl + `/${wood.id}`))
+//                     .json(WoodsService.serializeWood(wood))
+//             })
+//             .catch(next)
+//     })
 
 
 
 woodsRouter
     .route('/:entry_id')
-    // .all(requireAuth)
+    .all(requireAuth)
     .all(checkEntryExists)
     .get((req, res) => {
         res.json(WoodsService.serializeWood(res.entry))
@@ -76,7 +77,7 @@ woodsRouter
 
 woodsRouter
     .route('/:entry_id/submissions')
-    // .all(requireAuth)
+    .all(requireAuth)
     .all(checkEntryExists)
     .get((req, res, next) => {
       WoodsService.getSubmissionsForWood(

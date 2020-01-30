@@ -22,7 +22,6 @@ const SubmissionsService = {
         'sub.peak_hz_long_grain',
         'sub.peak_hz_cross_grain',
         'sub.comments',
-        // ...userFields,
         db.raw(
           `json_strip_nulls(
             row_to_json(

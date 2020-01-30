@@ -44,26 +44,29 @@ describe("Woods Endpoints", function() {
           .expect(200, expectedWoods);
       });
     });
-    context(`Given an XSS attack wood`, () => {
-      const testUser = helpers.makeUsersArray()[1];
-      const { maliciousWood, expectedWood } = helpers.makeMaliciousWood(
-        testUser
-      );
 
-      beforeEach("insert malicious wood", () => {
-        return helpers.seedMaliciousWood(db, testUser, maliciousWood);
-      });
+    //POST ROUTE REMOVED
 
-      it("removes XSS attack content", () => {
-        return supertest(app)
-          .get(`/api/woods`)
-          .expect(200)
-          .expect(res => {
-            expect(res.body[0].genus).to.eql(expectedWood.genus);
-            expect(res.body[0].species).to.eql(expectedWood.species);
-          });
-      });
-    });
+    // context(`Given an XSS attack wood`, () => {
+    //   const testUser = helpers.makeUsersArray()[1];
+    //   const { maliciousWood, expectedWood } = helpers.makeMaliciousWood(
+    //     testUser
+    //   );
+
+    //   beforeEach("insert malicious wood", () => {
+    //     return helpers.seedMaliciousWood(db, testUser, maliciousWood);
+    //   });
+
+    //   it("removes XSS attack content", () => {
+    //     return supertest(app)
+    //       .get(`/api/woods`)
+    //       .expect(200)
+    //       .expect(res => {
+    //         expect(res.body[0].genus).to.eql(expectedWood.genus);
+    //         expect(res.body[0].species).to.eql(expectedWood.species);
+    //       });
+    //   });
+    // });
   });
 
   describe('GET /api/woods/:entry_id', () => {

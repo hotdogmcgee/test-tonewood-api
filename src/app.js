@@ -26,7 +26,7 @@ app.use('/api/submissions', submissionsRouter)
 
 app.get('/', (req, res) => {
 
-    res.send(DATABASE_URL)
+    res.send('Hello, world!')
 })
 
 app.use(function errorHandler(error, req, res, next) {
