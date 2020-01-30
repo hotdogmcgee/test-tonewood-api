@@ -1,7 +1,6 @@
 const xss = require('xss')
 const Treeize = require('treeize')
 
-//why is userFields used in thingful server?
 const WoodsService = {
     getAllWoods(db) {
         return db
@@ -99,9 +98,6 @@ const WoodsService = {
       serializeWood(wood) {
         const woodTree = new Treeize()
     
-        // Some light hackiness to allow for the fact that `treeize`
-        // only accepts arrays of objects, and we want to use a single
-        // object.
         const woodData = woodTree.grow([ wood ]).getData()[0]
     
         return {

@@ -35,7 +35,6 @@ woodsRouter
 
 woodsRouter
     .route('/')
-    //auth back in
     .post( jsonBodyParser, (req, res, next) => {
       const { genus, species, common_name, hardness, user_id  } = req.body
       const newWood = { genus, species, common_name, hardness, user_id }
@@ -68,7 +67,7 @@ woodsRouter
 
 woodsRouter
     .route('/:entry_id')
-    // .all(requireAuth)
+    .all(requireAuth)
     .all(checkEntryExists)
     .get((req, res) => {
         res.json(WoodsService.serializeWood(res.entry))
@@ -76,7 +75,7 @@ woodsRouter
 
 woodsRouter
     .route('/:entry_id/submissions')
-    // .all(requireAuth)
+    .all(requireAuth)
     .all(checkEntryExists)
     .get((req, res, next) => {
       WoodsService.getSubmissionsForWood(

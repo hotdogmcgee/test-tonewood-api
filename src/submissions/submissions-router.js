@@ -6,7 +6,6 @@ const { requireAuth } = require("../middleware/jwt-auth");
 const submissionsRouter = express.Router();
 const jsonBodyParser = express.json();
 
-//get all
 submissionsRouter.route("/").get((req, res, next) => {
   const { user_id, sort } = req.query;
 
@@ -36,11 +35,8 @@ submissionsRouter
   .route("/")
 
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
-    //variables on diff lines
-    //need to make default input for new_tw_name null
     const {
       tw_id,
-      // user_id,
       new_tw_name,
       density,
       e_long,
@@ -57,7 +53,6 @@ submissionsRouter
     } = req.body;
     const newSubmission = {
       tw_id,
-      // user_id,
       new_tw_name,
       density,
       e_long,
@@ -78,7 +73,7 @@ submissionsRouter
         return res.status(400).json({
           error: `Missing '${key}' in request body`
         });
-    // user submit from login data, make sure to update everything else
+
     newSubmission.user_id = req.user.id
 
     SubmissionsService.insertSubmission(req.app.get("db"), newSubmission)

@@ -41,10 +41,12 @@ usersRouter.post("/", jsonBodyParser, (req, res, next) => {
 
   if (emailError) return res.status(400).json({ error: emailError });
 
-UsersService.hasUserWithEmail(req.app.get("db"), email)
-        .then(hasUserWithEmail => {
-          if (hasUserWithEmail)
-            return res.status(400).json({ error: `Email already in use` });})
+  UsersService.hasUserWithEmail(req.app.get("db"), email).then(
+    hasUserWithEmail => {
+      if (hasUserWithEmail)
+        return res.status(400).json({ error: `Email already in use` });
+    }
+  );
 
   UsersService.hasUserWithUserName(req.app.get("db"), user_name, next)
     .then(hasUserWithUserName => {
@@ -59,9 +61,6 @@ UsersService.hasUserWithEmail(req.app.get("db"), email)
           full_name,
           date_created: "now()"
         };
-        console.log(newUser.hashedPassword);
-
-        
 
         return UsersService.insertUser(req.app.get("db"), newUser).then(
           user => {
@@ -69,13 +68,11 @@ UsersService.hasUserWithEmail(req.app.get("db"), email)
               .status(201)
               .location(path.posix.join(req.originalUrl, `/${user.id}`))
               .json(UsersService.serializeUser(user));
-
           }
         );
       });
     })
     .catch(next);
-  })
-  
+});
 
 module.exports = usersRouter;
