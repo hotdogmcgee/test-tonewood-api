@@ -85,7 +85,7 @@ To run front-end or back-end tests, simply run `npm test` in the terminal.
 │   └── POST
 │       └──/login
 ├── /users
-│   └── GET
+│   └── GET /
 │   └── GET /:id
 │   └── POST
 │       └── /
@@ -94,8 +94,6 @@ To run front-end or back-end tests, simply run `npm test` in the terminal.
 │       ├── /
 │       ├── /:entry_id
 │       └── /:entry_id/submissions
-│   └── POST
-│       └── /profilePicture/:id
 ├── /submissions
 │   └── GET
 │       ├── /
@@ -246,7 +244,7 @@ To run front-end or back-end tests, simply run `npm test` in the terminal.
             sample_weight: Number,
             peak_hz_long_grain: Number,
             peak_hz_cross_grain: Number,
-            comments: xss(sub.comments),
+            comments: String,
             user: {
                 id: 5,
                 user_name: String,
