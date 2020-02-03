@@ -6,6 +6,7 @@ const { requireAuth } = require("../middleware/jwt-auth");
 const submissionsRouter = express.Router();
 const jsonBodyParser = express.json();
 
+//GET all submissions
 submissionsRouter.route("/").get((req, res, next) => {
   const { user_id, sort } = req.query;
 
@@ -31,6 +32,8 @@ submissionsRouter.route("/").get((req, res, next) => {
     })
     .catch(next);
 });
+
+//POST a new submission
 submissionsRouter
   .route("/")
 
@@ -86,6 +89,7 @@ submissionsRouter
       .catch(next);
   });
 
+  //GET a specific submission
 submissionsRouter
   .route("/:submission_id")
   .all(requireAuth)

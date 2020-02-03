@@ -5,6 +5,7 @@ const UsersService = require("./users-service");
 const usersRouter = express.Router();
 const jsonBodyParser = express.json();
 
+//GET all users
 usersRouter.route("/").get((req, res, next) => {
   const { sort } = req.query;
 
@@ -25,6 +26,7 @@ usersRouter.route("/").get((req, res, next) => {
     .catch(next);
 });
 
+//POST new user
 usersRouter.post("/", jsonBodyParser, (req, res, next) => {
   const { password, user_name, full_name, email } = req.body;
   for (const field of ["full_name", "user_name", "email", "password"])

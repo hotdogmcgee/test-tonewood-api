@@ -6,6 +6,7 @@ const { requireAuth } = require('../middleware/jwt-auth')
 const woodsRouter = express.Router()
 const jsonBodyParser = express.json()
 
+//GET all woods
 woodsRouter
     .route('/')
     .get((req, res, next) => {
@@ -66,7 +67,7 @@ woodsRouter
 //     })
 
 
-
+//GET a specific wood
 woodsRouter
     .route('/:entry_id')
     .all(requireAuth)
@@ -75,6 +76,7 @@ woodsRouter
         res.json(WoodsService.serializeWood(res.entry))
     })
 
+//GET all submissions for a given wood
 woodsRouter
     .route('/:entry_id/submissions')
     .all(requireAuth)

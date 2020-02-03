@@ -10,13 +10,10 @@ https://test-tonewood-api.herokuapp.com/
 
 <https://test-tonewood-app.kevinrobinsondeveloper.now.sh>
 
-## Prerequisites
-
-Buvie requires Node.js v6.0+ to run.
 
 ## Installing
 
-Buvie requires Node.js v6.0+ to run.
+Test-Tonewood-API requires Node.js v6.0+ to run.
 Install the dependencies and devDependencies and start the server.
 
 ```
