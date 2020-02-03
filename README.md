@@ -300,7 +300,7 @@ To run front-end or back-end tests, simply run `npm test` in the terminal.
 
 ```
 
-### GET `/api/submissions?submission_id`
+### GET `/api/submissions/:submission_id`
 
 ```js
 
